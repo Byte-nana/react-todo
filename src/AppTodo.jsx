@@ -1,44 +1,31 @@
+import Button from './components/Button.jsx';
+import TodoItem from './components/TodoItem.jsx';
+import Addform from './components/Addform.jsx';
 import { FiSun } from 'react-icons/fi';
-import { FaTrashCan } from 'react-icons/fa6';
-import './App.css';
+import styles from './AppTodo.module.css';
 
 export default function AppTodo() {
   return (
-    <>
-      <header>
-        <button>
+    <section className={styles.todo}>
+      <header className={styles.todo__header}>
+        <Button variant='theme-toggle'>
           <FiSun />
-        </button>
-        <div>
-          <button>All</button>
-          <button>Active</button>
-          <button>Completed</button>
+        </Button>
+        <div className={styles.header__btns}>
+          <Button variant='filter-btn'>All</Button>
+          <Button variant='filter-btn'>Active</Button>
+          <Button variant='filter-btn'>Completed</Button>
         </div>
       </header>
-      <main>
-        <ul>
-          <li>
-            <input type='checkbox' name='checkbox' id='' />
-            <span>Studying React</span>
-            <button>
-              <FaTrashCan />
-            </button>
-          </li>{' '}
-          <li>
-            <input type='checkbox' name='checkbox' id='' />
-            <span>Studying React</span>
-            <button>
-              <FaTrashCan />
-            </button>
-          </li>
+      <main className={styles.main}>
+        <ul className={styles.main__items}>
+          <TodoItem todoText='Studying react' />
+          <TodoItem todoText='Finishing game-project' />
         </ul>
       </main>
-      <footer>
-        <form action=''>
-          <input type='text' />
-          <button>Add</button>
-        </form>
+      <footer className={styles.footer}>
+        <Addform />
       </footer>
-    </>
+    </section>
   );
 }

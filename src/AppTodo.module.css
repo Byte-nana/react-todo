@@ -1,0 +1,59 @@
+:root {
+  /* light mode colour theme */
+  --color-light-purple: #ece3f0;
+  --color-purple: #d3bbdd;
+  --color-ivory: #efe7d3;
+  --color-pink: #f8c0c8;
+
+  /* size */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-light-purple);
+}
+
+.todo {
+  width: 400px;
+  border-radius: 1.5rem;
+  background-color: var(--color-ivory);
+  overflow: hidden;
+}
+
+.todo__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background-color: var(--color-purple);
+}
+
+.header__btns {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.main {
+  height: 300px;
+  overflow-y: auto;
+}
+
+.main__items {
+  padding: 1rem;
+  list-style: none;
+}
+
+.footer {
+  padding: 1rem;
+  background-color: var(--color-purple);
+}
