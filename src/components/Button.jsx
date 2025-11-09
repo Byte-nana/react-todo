@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-export default function Button({ children, variant = 'default' }) {
+export default function Button({ children, variant = 'default', onClick }) {
   return (
-    <button className={`${styles.button} ${styles[variant]}`}>
+    <button onClick={onClick} className={`${styles.button} ${styles[variant]}`}>
       {children}
     </button>
   );

@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { forwardRef, useState } from 'react';
 import Button from './Button.jsx';
 import styles from './TodoItem.module.css';
 import { FaTrashCan } from 'react-icons/fa6';
 
-export default function TodoItem({ todoText }) {
+const TodoItem = forwardRef(function TodoItem(
+  { todoText, completed, onCheck, onDelete },
+  ref
+) {
   return (
-    <li className={styles.item}>
-      <label htmlFor='' className={styles.item__label}>
+    <li ref={ref} className={styles.item}>
+      <label htmlFor='checkbox' className={styles.item__label}>
         <input
           type='checkbox'
+          id='checkbox'
           name='checkbox'
-          id=''
+          checked={completed}
           className={styles.item__checkbox}
+          onChange={onCheck}
         />
         <span>{todoText}</span>
       </label>
-      <Button variant='delete-btn'>
+      <Button variant='delete-btn' onClick={onDelete}>
         <FaTrashCan />
       </Button>
     </li>
   );
-}
+});
+export default TodoItem;

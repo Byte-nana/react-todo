@@ -17,3 +17,6 @@
   width: 1rem;
   height: 1rem;
 }
+.item__checkbox:checked + span {
+  text-decoration: line-through;
+}
