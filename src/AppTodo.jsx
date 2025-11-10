@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './AppTodo.module.css';
 import Button from './components/Button.jsx';
 import TodoItem from './components/TodoItem.jsx';
@@ -8,6 +8,7 @@ import { FiSun } from 'react-icons/fi';
 export default function AppTodo() {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState('all');
+  const [theme, setTheme] = useState('light');
   const lastItemRef = useRef();
 
   const handleAdd = (text) => {
@@ -37,6 +38,17 @@ export default function AppTodo() {
     );
   };
 
+  const handleThemeToggle = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(newTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.classList.add('light');
+  }, []);
   const filterTodos = todos.filter((todo) => {
     if (filter === 'active') {
       return !todo.completed;
@@ -50,7 +62,7 @@ export default function AppTodo() {
   return (
     <section className={styles.todo}>
       <header className={styles.todo__header}>
-        <Button variant='theme-toggle'>
+        <Button variant='theme-toggle' onClick={handleThemeToggle}>
           <FiSun />
         </Button>
         <div className={styles.header__btns}>

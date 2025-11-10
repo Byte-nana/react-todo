@@ -1,0 +1,31 @@
+:root {
+  /* light mode colour theme */
+
+  --color-light-purple: #ece3f0;
+  --color-purple: #d3bbdd;
+  --color-ivory: #efe7d3;
+  --color-pink: #f8c0c8;
+
+  --color-btn: var(--color-black);
+  --color-light-blue: #bbc8de;
+  --color-deep-blue: #52688f;
+  --color-black: #151b25;
+  --color-deep-navy: #192e41;
+}
+
+html.light {
+  --color-bg: var(--color-light-purple);
+  --color-todo-bg: var(--color-ivory);
+  --color-todo-banner: var(--color-purple);
+  --color-btn: var(--color-ivory);
+  --color-delete-btn: var(--color-pink);
+  --color-add-btn: var(--color-ivory);
+}
+html.dark {
+  /* dark mode colour theme */
+  --color-bg: var(--color-black);
+  --color-todo-bg: var(--color-light-blue);
+  --color-todo-banner: var(--color-deep-navy);
+  --color-delete-btn: var(--color-deep-blue);
+  --color-add-btn: var(--color-light-blue);
+}
