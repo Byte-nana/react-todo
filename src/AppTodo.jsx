@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import styles from './AppTodo.module.css';
 import Button from './components/Button.jsx';
 import TodoItem from './components/TodoItem.jsx';
@@ -8,6 +8,7 @@ import { FiSun } from 'react-icons/fi';
 export default function AppTodo() {
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState('all');
+  const lastItemRef = useRef();
 
   const handleAdd = (text) => {
     const newTodo = {
@@ -16,6 +17,12 @@ export default function AppTodo() {
       completed: false,
     };
     setTodos((prev) => [...prev, newTodo]);
+
+    requestAnimationFrame(() => {
+      if (lastItemRef.current) {
+        lastItemRef.current.scrollIntoView();
+      }
+    });
   };
 
   const handleDelete = (id) => {
@@ -37,7 +44,7 @@ export default function AppTodo() {
     if (filter === 'completed') {
       return todo.completed;
     }
-    return true;
+    return todo;
   });
 
   return (
@@ -60,9 +67,10 @@ export default function AppTodo() {
       </header>
       <main className={styles.main}>
         <ul className={styles.main__items}>
-          {filterTodos.map((todo) => {
+          {filterTodos.map((todo, index) => {
             return (
               <TodoItem
+                ref={index === filterTodos.length - 1 ? lastItemRef : null}
                 key={todo.id}
                 todoText={todo.text}
                 completed={todo.completed}
